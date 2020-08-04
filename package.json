@@ -34,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/noah0316/nomad_reactjs-for-beginners.git",
+  "author": "Noah <noa316@naver.com>",
+  "license": "MIT"
 }
