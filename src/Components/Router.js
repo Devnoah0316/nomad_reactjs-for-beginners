@@ -6,7 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "Routes/Home";
-import TV from "Routes/TV";
+import TV from "../Routes/TV";
 import Header from "Components/Header";
 import Search from "Routes/Search";
 
