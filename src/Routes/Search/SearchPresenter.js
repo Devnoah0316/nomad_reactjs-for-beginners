@@ -62,7 +62,7 @@ const SearchPresenter = ({
             {tvResult.map((show) => (
               <Poster
                 key={show.id}
-                id={show.poster_path}
+                id={show.id}
                 title={show.original_name}
                 rating={show.vote_average}
                 year={show.first_air_date.substring(0, 4)}

@@ -5,7 +5,7 @@ import { moviesApi, tvApi } from "../../api";
 export default class extends React.Component {
   state = {
     movieResults: null,
-    tvResult: null,
+    tvResults: null,
     searchTerm: "",
     loading: false,
     error: null,
@@ -36,9 +36,12 @@ export default class extends React.Component {
         data: { results: movieResults },
       } = await moviesApi.search(searchTerm);
       const {
-        data: { results: tvResult },
+        data: { results: tvResults },
       } = await tvApi.search(searchTerm);
-      this.setState({ movieResults, tvResult });
+      this.setState({
+        movieResults,
+        tvResults,
+      });
     } catch {
       this.setState({ error: "Can't find results." });
     } finally {
@@ -47,18 +50,11 @@ export default class extends React.Component {
   };
 
   render() {
-    const {
-      movieResults,
-      tvResult,
-      searchTerm,
-      loading,
-      error,
-      updateTerm,
-    } = this.state;
+    const { movieResults, tvResults, searchTerm, loading, error } = this.state;
     return (
       <SearchPresenter
         movieResults={movieResults}
-        tvResult={tvResult}
+        tvResults={tvResults}
         loading={loading}
         error={error}
         searchTerm={searchTerm}

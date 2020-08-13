@@ -19,7 +19,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
           {topRated.map((show) => (
             <Poster
               key={show.id}
-              id={show.poster_path}
+              id={show.id}
               imageUrl={show.poster_path}
               title={show.original_name}
               rating={show.vote_average}
@@ -33,7 +33,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
           {popular.map((show) => (
             <Poster
               key={show.id}
-              id={show.poster_path}
+              id={show.id}
               imageUrl={show.poster_path}
               title={show.original_name}
               rating={show.vote_average}
@@ -47,7 +47,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
           {airingToday.map((show) => (
             <Poster
               key={show.id}
-              id={show.poster_path}
+              id={show.id}
               imageUrl={show.poster_path}
               title={show.original_name}
               rating={show.vote_average}
