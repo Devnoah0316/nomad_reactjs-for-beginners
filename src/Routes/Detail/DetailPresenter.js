@@ -52,7 +52,7 @@ const Title = styled.h3`
 `;
 
 const ItemContainer = styled.div`
-  margin: 20px 0;
+  margin: 20px 0px;
 `;
 
 const Item = styled.span``;
@@ -120,8 +120,8 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
-            <Overview>{result.overview}</Overview>
           </ItemContainer>
+          <Overview>{result.overview}</Overview>
         </Data>
       </Content>
     </Container>
