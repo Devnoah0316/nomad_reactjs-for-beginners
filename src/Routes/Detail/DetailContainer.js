@@ -13,6 +13,7 @@ export default class extends React.Component {
       error: null,
       loading: true,
       isMovie: pathname.includes("/movie/"),
+      button: false,
     };
   }
 
@@ -42,8 +43,22 @@ export default class extends React.Component {
     }
   }
 
+  handleButton = (event) => {
+    this.setState({
+      button: !this.state.button,
+    });
+  };
   render() {
     const { result, error, loading } = this.state;
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+
+    return (
+      <DetailPresenter
+        result={result}
+        error={error}
+        loading={loading}
+        button={this.state.button}
+        handleButton={this.handleButton}
+      />
+    );
   }
 }

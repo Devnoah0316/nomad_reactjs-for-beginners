@@ -68,7 +68,25 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
+const Youtube = styled.iframe`
+  border-radius: 4px;
+  margin-top: 25px;
+  width: 80%;
+  height: 70%;
+  display: ${(props) => (props.isExist ? "block" : "none")};
+`;
+
+const Button = styled.button`
+  all: unset;
+  font-size: 20px;
+  padding-top: 50px;
+
+  :hover {
+    color: grey;
+  }
+`;
+
+const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
   loading ? (
     <>
       <Helmet>
@@ -122,6 +140,22 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          {result.videos.results[0]?.key ? (
+            <>
+              <Button onClick={handleButton}>Trailer</Button>
+              <Youtube
+                id="ytplayer"
+                type="text/html"
+                width="640"
+                height="360"
+                src={`https://www.youtube.com/embed/${result.videos.results[0]?.key}`}
+                frameborder="0"
+                isExist={button}
+              ></Youtube>
+            </>
+          ) : (
+            <> </>
+          )}
         </Data>
       </Content>
     </Container>
@@ -130,6 +164,8 @@ DetailPresenter.propTypes = {
   result: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
+  button: PropTypes.bool.isRequired,
+  handleButton: PropTypes.func.isRequired,
 };
 
 export default DetailPresenter;
