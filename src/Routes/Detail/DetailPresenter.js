@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import FlagEmoji from "Components/FlagEmoji";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -71,8 +72,8 @@ const Overview = styled.p`
 const Youtube = styled.iframe`
   border-radius: 4px;
   margin-top: 25px;
-  width: 80%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
   display: ${(props) => (props.isExist ? "block" : "none")};
 `;
 
@@ -114,6 +115,11 @@ const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
           }
         />
         <Data>
+          <>
+            {result.production_countries.map((country, index) => (
+              <FlagEmoji key={index} country={country.iso_3166_1} />
+            ))}
+          </>
           <Title>
             {result.original_title
               ? result.original_title
@@ -146,8 +152,6 @@ const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
               <Youtube
                 id="ytplayer"
                 type="text/html"
-                width="640"
-                height="360"
                 src={`https://www.youtube.com/embed/${result.videos.results[0]?.key}`}
                 frameborder="0"
                 isExist={button}
