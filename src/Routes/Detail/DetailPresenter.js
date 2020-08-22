@@ -116,9 +116,13 @@ const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
         />
         <Data>
           <>
-            {result.production_countries.map((country, index) => (
-              <FlagEmoji key={index} country={country.iso_3166_1} />
-            ))}
+            {result.production_countries
+              ? result.production_countries.map((country, index) => (
+                  <FlagEmoji key={index} country={country.iso_3166_1} />
+                ))
+              : result.origin_country.map((country, index) => (
+                  <FlagEmoji key={index} country={country} />
+                ))}
           </>
           <Title>
             {result.original_title
