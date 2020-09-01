@@ -87,7 +87,14 @@ const Button = styled.button`
   }
 `;
 
-const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
+const DetailPresenter = ({
+  result,
+  credits,
+  loading,
+  error,
+  handleButton,
+  button,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -175,6 +182,7 @@ const DetailPresenter = ({ result, loading, error, handleButton, button }) =>
   );
 DetailPresenter.propTypes = {
   result: PropTypes.object,
+  credits: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
   button: PropTypes.bool.isRequired,
