@@ -36,7 +36,7 @@ export default class extends React.Component {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
         ({ data: credits } = await moviesApi.credits(parsedId));
-        console.log(credits);
+        console.log(credits.cast[0].name);
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
         ({ data: credits } = await tvApi.credits(parsedId));
@@ -45,7 +45,7 @@ export default class extends React.Component {
     } catch {
       this.setState({ error: "Can't find anything." });
     } finally {
-      this.setState({ loading: false, result });
+      this.setState({ loading: false, result, credits });
     }
   }
 

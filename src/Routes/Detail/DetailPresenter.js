@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 import FlagEmoji from "Components/FlagEmoji";
+import CastPoster from "Components/CastPoster";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -63,7 +64,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
@@ -73,14 +74,14 @@ const Youtube = styled.iframe`
   border-radius: 4px;
   margin-top: 25px;
   width: 50%;
-  height: 50%;
+  height: 42%;
   display: ${(props) => (props.isExist ? "block" : "none")};
 `;
 
 const Button = styled.button`
   all: unset;
   font-size: 20px;
-  padding-top: 50px;
+  padding-top: 3%;
 
   :hover {
     color: grey;
@@ -162,6 +163,7 @@ const DetailPresenter = ({
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+
           {result.videos.results[0]?.key ? (
             <>
               <Button onClick={handleButton}>Trailer</Button>
@@ -176,6 +178,11 @@ const DetailPresenter = ({
           ) : (
             <> </>
           )}
+          <CastPoster
+            imageUrl={credits.cast[0].profile_path}
+            character={credits.cast[0].character}
+            name={credits.cast[0].name}
+          ></CastPoster>
         </Data>
       </Content>
     </Container>
