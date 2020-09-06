@@ -73,8 +73,8 @@ const Overview = styled.p`
 const Youtube = styled.iframe`
   border-radius: 4px;
   margin-top: 25px;
-  width: 50%;
-  height: 42%;
+  width: 70%;
+  height: 60%;
   display: ${(props) => (props.isExist ? "block" : "none")};
 `;
 
@@ -86,6 +86,19 @@ const Button = styled.button`
   :hover {
     color: grey;
   }
+`;
+
+const CastTitle = styled.h3`
+  font-size: 32px;
+  margin-top: 1%;
+  position: absolute;
+`;
+
+const CastContainer = styled.div`
+  overflow-x: scroll;
+  display: flex;
+  margin-left: auto;
+  margin-top: 1.5%;
 `;
 
 const DetailPresenter = ({
@@ -178,13 +191,19 @@ const DetailPresenter = ({
           ) : (
             <> </>
           )}
-          <CastPoster
-            imageUrl={credits.cast[0].profile_path}
-            character={credits.cast[0].character}
-            name={credits.cast[0].name}
-          ></CastPoster>
         </Data>
       </Content>
+      <CastTitle>Cast</CastTitle>
+      <CastContainer>
+        {credits.cast.map((cast) => (
+          <CastPoster
+            key={cast.id}
+            imageUrl={cast.profile_path}
+            character={cast.character}
+            name={cast.name}
+          ></CastPoster>
+        ))}
+      </CastContainer>
     </Container>
   );
 DetailPresenter.propTypes = {

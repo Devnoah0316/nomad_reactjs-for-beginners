@@ -5,22 +5,21 @@ import styled from "styled-components";
 const Container = styled.div`
   font-size: 12px;
   margin-top: 3%;
+  margin-left: 1%;
 `;
 
 const Image = styled.div`
   background-image: url(${(props) => props.bgUrl});
-  width: 10%;
   height: 180px;
+  width: 130px;
   background-size: cover;
   border-radius: 4px;
   background-position: center center;
   transition: opacity 0.1s linear;
 `;
 
-const Rating = styled.span`
-  bottom: 5px;
-  right: 5px;
-  position: absolute;
+const Name = styled.span`
+  display: flex;
   opacity: 0;
   transition: opacity 0.1s linear;
 `;
@@ -32,15 +31,10 @@ const ImageContainer = styled.div`
     ${Image} {
       opacity: 0.3;
     }
-    ${Rating} {
+    ${Name} {
       opacity: 1;
     }
   }
-`;
-
-const Name = styled.span`
-  display: block;
-  margin-bottom: 3px;
 `;
 
 const CastPoster = ({ imageUrl, character, name }) => (
@@ -53,11 +47,17 @@ const CastPoster = ({ imageUrl, character, name }) => (
             : require("../assets/noPosterSmall.png")
         }
       />
+      <Name>
+        {character.length > 18
+          ? `Character: ${character.substring(0, 18)}...`
+          : `Character: ${character}`}
+      </Name>
+      <Name>
+        {name.length > 18
+          ? `Name: ${name.substring(0, 18)}...`
+          : `Name: ${name}`}
+      </Name>
     </ImageContainer>
-    <Name>
-      {character.length > 18 ? `${character.substring(0, 18)}...` : character}
-      {name.length > 18 ? `${name.substring(0, 18)}...` : name}
-    </Name>
   </Container>
 );
 CastPoster.propTypes = {
