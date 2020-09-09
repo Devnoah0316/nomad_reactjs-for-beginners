@@ -74,8 +74,11 @@ const Overview = styled.p`
 const Youtube = styled.iframe`
   border-radius: 4px;
   margin-top: 25px;
-  width: 70%;
-  height: 60%;
+  width: 1200px;
+  height: 500px;
+`;
+
+const Trailer = styled.div`
   display: ${(props) => (props.isExist ? "block" : "none")};
 `;
 
@@ -181,18 +184,19 @@ const DetailPresenter = ({
           {result.videos.results[0]?.key ? (
             <>
               <Button onClick={handleButton}>Trailer</Button>
-              <Carousel height="6000">
-                {result.videos.results.map((index) => (
-                  <Youtube
-                    key={index}
-                    id="ytplayer"
-                    type="text/html"
-                    src={`https://www.youtube.com/embed/${index.key}`}
-                    frameborder="0"
-                    isExist={button}
-                  ></Youtube>
-                ))}
-              </Carousel>
+              <Trailer isExist={button}>
+                <Carousel key={result.id}>
+                  {result.videos.results.map((index) => (
+                    <Youtube
+                      key={index.id}
+                      id="ytplayer"
+                      type="text/html"
+                      src={`https://www.youtube.com/embed/${index.key}`}
+                      frameborder="0"
+                    ></Youtube>
+                  ))}
+                </Carousel>
+              </Trailer>
             </>
           ) : (
             <> </>
