@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 import FlagEmoji from "Components/FlagEmoji";
 import CastPoster from "Components/CastPoster";
+import Carousel from "react-elastic-carousel";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -180,13 +181,18 @@ const DetailPresenter = ({
           {result.videos.results[0]?.key ? (
             <>
               <Button onClick={handleButton}>Trailer</Button>
-              <Youtube
-                id="ytplayer"
-                type="text/html"
-                src={`https://www.youtube.com/embed/${result.videos.results[0]?.key}`}
-                frameborder="0"
-                isExist={button}
-              ></Youtube>
+              <Carousel height="6000">
+                {result.videos.results.map((index) => (
+                  <Youtube
+                    key={index}
+                    id="ytplayer"
+                    type="text/html"
+                    src={`https://www.youtube.com/embed/${index.key}`}
+                    frameborder="0"
+                    isExist={button}
+                  ></Youtube>
+                ))}
+              </Carousel>
             </>
           ) : (
             <> </>
