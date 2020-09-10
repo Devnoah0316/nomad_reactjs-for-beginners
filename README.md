@@ -25,4 +25,8 @@ Learning React and ES6 by building a Movie Discovery App.
 - [x] Show Trailer
 - [x] Show Movies & TV's Country of origin
 - [x] Show Movies & TV's Castmember's profile in Detailpage
-- [ ] Deploy on Netlify
+- [x] Deploy on Netlify
+
+## Preview
+
+Try it on [netlify](https://confident-minsky-12a7bb.netlify.app/)
